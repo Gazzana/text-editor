@@ -1,0 +1,48 @@
+body {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	margin: auto;
+	max-width: 100%;
+	max-height: 100%;
+	background-color: rgb(31, 31, 31);
+	height: 100%;
+	width: 100%;
+}
+
+html {
+	background-color: rgb(31, 31, 31);
+}
+
+.settings {
+	background-color: aqua;
+}
+
+
+#text {
+	/* height: 100px; */
+	/* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Arial Narrow', Arial, sans-serif; */
+	font-family: 'Cascadia Code', Consolas, 'Courier New', monospace;
+	background-color: rgb(90, 90, 90);
+	border-radius: 5px;
+	padding: 5px;
+	white-space: pre-wrap; 
+}
+
+#title {
+	text-align: center;
+	background-color: rgb(90, 90, 90);
+	border-radius: 5px;
+	padding: 5px;
+	justify-content: center;
+	color: black
+}
+
+.content {
+	/* min-height: 200px; */
+	border: 40x solid rgb(11, 11, 11);
+	padding: 20px;
+	margin: 2rem;
+	background-color: rgb(112, 112, 112);
+	border-radius: 10px;
+	color: aliceblue;
+}

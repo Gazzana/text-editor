@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Text Reactor</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
+  <!-- Google icons -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <link rel="stylesheet" href="../../src/index.css" />
+</head>
+
+<body>
+  <div>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" onclick="alertOnExit()" href="https://google.com">
+          <!-- <span class="material-symbols-outlined">search</span> -->
+          <img src="../../resources/logo.png">
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" onclick="toggleMonospace()">
+            <span class="material-symbols-outlined">font_download</span>Monospace
+          </a>
+
+          <a class="navbar-item" onclick="alertOnExit()" href="../docs/docs.html">
+            <span class="material-symbols-outlined">menu_book</span> Docs
+          </a>
+
+          <a class="navbar-item" onclick="alertOnExit()" href="../settings/settings.html">
+            <span class="material-symbols-outlined">settings</span> Settings
+          </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              More
+            </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                About
+              </a>
+              <a class="navbar-item">
+                Jobs
+              </a>
+              <a class="navbar-item">
+                Contact
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item">
+                Report an issue
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="content">
+      <h1 contenteditable="true" id="title" class="title">Title</h1>
+      <div contenteditable="true" id="text">text</div>
+      <br>
+      <button class="button is-primary" id="saveBtn">Save</button>
+      <button class="button is-primary" onclick="loadFile()">Load</button>
+      <br>
+      <button class="button is-warning is-light is-small is-fullwidth" onclick="debugText()">Debug Content</button>
+    </div>
+  </div>
+</body>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+<script src="render.js"></script>
+<script src="../../src/mouse.js"></script>
+<script type="text/json" src="../user/settings.json"></script>
+
+</html>
