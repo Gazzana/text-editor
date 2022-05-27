@@ -75,10 +75,12 @@ function debugText() {
 }
 
 function alertOnExit() {
-	if (confirm("You may save your file before quitting the page.")) {
-		document.getElementById('saveBtn').click();
-	}
-	else {
-		console.log('gods');
+	if (true /*Check json config file for user preferences*/) {
+		if (confirm("You may save your file before quitting the page.")) {
+			document.getElementById('saveBtn').click();
+		}
+		else {
+			console.log('gods');
+		}
 	}
 }

@@ -1,28 +1,42 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const electron = require('electron');
 const Menu = electron.Menu;
 const MenuItem = electron.MenuItem;
 const path = require('path');
+const fs = require('fs')
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
-  // eslint-disable-line global-require
   app.quit();
 }
+
+function handleSetTitle(event, title) {
+  const webContents = event.sender;
+  const win = BrowserWindow.fromWebContents(webContents);
+
+  win.setTitle('Text Reactor:' + title);
+}
+
+
+
 
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    icon: 'D:/Scripts/Projects/text-reactor/resources/logo.png' // (html: 00c558) is the main color (just a reminder)
+    icon: 'D:/Scripts/Projects/text-reactor/resources/logo.png', // (html: 00c558) is the main color (just a reminder)
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false
+    }
   });
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, '../pages/main/index.html'));
 
   // Open the DevTools. //! Disabled for testing
-  // mainWindow.webContents.openDevTools(); 
+  mainWindow.webContents.openDevTools(); 
 
   //* Context menu
   const ctxMenu = new Menu()
@@ -42,7 +56,10 @@ const createWindow = () => {
 
 // This method will be called when Electron has finished initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready', () => {
+  createWindow();
+  ipcMain.on('set-title', handleSetTitle)
+});
 
 // Quit when all windows are closed
 app.on('window-all-closed', () => {
@@ -61,3 +78,20 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+
+//* IPC main
+
+ipcMain.on('load-json-main', (event, args) => {
+  // console.log('ipc event from index.js: ', args)
+  // event.sender.send('Index.js')
+  
+  
+  
+  // let data = document.getElementById('text').innerText
+  
+  console.log(args)
+  event.returnValue = fs.writeFile('..\pages\settings\settings.json', 'DATA!', (err) => {
+    if (err) throw err
+  });
+});
